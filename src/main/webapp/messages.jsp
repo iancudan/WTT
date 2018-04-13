@@ -56,7 +56,7 @@
         /* Modal Content */
         .modal-content {
             position: fixed;
-            bottom: 50%;
+            bottom: 40%;
             background-color: #fefefe;
             width: 100%;
             -webkit-animation-name: slideIn;
@@ -176,7 +176,7 @@
             <td><%=lista.get(i).getEmailSubject()%></td>
             <td><%=lista.get(i).getEmailBody()%></td>
             <td><%=lista.get(i).getEmailDateAndTime()%></td>
-            <td><a onclick="readEmail(<%=i%>,'#readEmail<%=i+1%>')" ><i id="readEmail<%=i+1%>" style="font-size: 25px;color:green" title="If your change are done, update the table!" class="far fa-envelope"></i></a></td>
+            <td><a onclick="readEmail(<%=i+1%>,'#readEmail<%=i+1%>')" ><i id="readEmail<%=i+1%>" style="font-size: 25px;color:green" title="If your change are done, update the table!" class="far fa-envelope"></i></a></td>
             <td><a onclick="update()"><i style="font-size: 25px;" title="Reply" class="fas fa-reply-all"></i></a></td>
         </tr>
         <%

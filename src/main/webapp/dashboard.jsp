@@ -20,6 +20,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 </head>
 <body>
 <%
@@ -27,18 +29,22 @@
         response.sendRedirect("login.jsp");
     }
 %>
+
 <div id="perspective" class="perspective effect-rotateleft">
     <div class="container">
         <div class="wrapper"><!-- wrapper needed for scroll -->
-            <!-- Top Navigation -->
-            <div class="codrops-top clearfix">
-                <div class="dropdown">
-                    <span><i class="fas fa-user"> <%=session.getAttribute("username")%></i></span>
-                    <div class="dropdown-content">
-                        <p><a href="logout">Log out</a></p>
+            <!-- Navbar (sit on top) -->
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                    <a href="#home" class="w3-bar-item w3-button"><b>WTT</b> World Tips Travel</a>
+                    <!-- Float links to the right. Hide them on small screens -->
+                    <div class="w3-right w3-hide-small">
+                        <a href="/dashboard.jsp" class="w3-bar-item w3-button"><i class="fas fa-home"  title="Go to Menu"></i></a>
+                        <a href="#" class="w3-bar-item w3-button"><i class="fas fa-sign-out-alt" title="Sign Out"></i></a>
+                        <a href="#" class="w3-bar-item w3-button"><i class="fas fa-user" title="You are connected with <%=session.getAttribute("username")%>"></i></a>
                     </div>
                 </div>
-          </div>
+            </div>
             <header class="codrops-header">
                 <h1>Perspective Page View Navigation <span>Transforms the page in 3D to reveal a menu</span></h1>
             </header>

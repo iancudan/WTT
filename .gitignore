@@ -2,7 +2,6 @@
 *.ipr
 *.iws
 *.eml
-*.xml
 .idea/
 node_modules/
 classes/

@@ -10,7 +10,7 @@
 <body>
 <div class="login-page">
     <div class="form">
-        <form class="register-form">
+        <form class="register-form" action="sendemail" method="post">
             <input type="text" placeholder="name"/>
             <input type="password" placeholder="password"/>
             <input type="text" placeholder="email address"/>

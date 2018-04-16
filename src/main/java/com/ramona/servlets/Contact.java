@@ -13,6 +13,7 @@ import java.io.IOException;
 @WebServlet("/contact")
 public class Contact extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String mesaj = request.getParameter("message");

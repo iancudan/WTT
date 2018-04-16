@@ -4,9 +4,7 @@ import WTT.Email;
 import WTT.Locatii;
 import WTT.Utilizator;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -174,5 +172,106 @@ public class DatabaseOperation {
         }
 
         return data;
+    }
+
+    public int insertUtilizator(Utilizator user) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null){}
+
+        int res = -1;
+        if (user == null) {
+            return res;
+        }
+        try {
+            String query = "INSERT INTO user(nume,email,parola,cod_confirmare) VALUES(?,?,?,?)";
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connect.prepareStatement(query);
+            preparedStatement.setString(1, user.getNume());
+            preparedStatement.setString(2,user.getEmail());
+            preparedStatement.setString(3,user.getParola());
+            preparedStatement.setString(4,user.getCodConfirmare());
+            res = preparedStatement.executeUpdate();
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+
+    public Integer checkUniqueEmail (String email){
+        Integer uniqueEmail=1;
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+
+        if (connect == null) {
+            return uniqueEmail;
+        } else {
+            // Change below query according to your own database.
+            String query = "select count(*) from user where email = '"+email +"'";
+            try {
+                Statement stmt  = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    uniqueEmail = rs.getInt(1);
+                }
+                connect.close();
+                return uniqueEmail;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return uniqueEmail;
+    }
+
+    public String checkConfirmationCode(String email){
+        String codConfirmare="";
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+
+        if (connect == null) {
+            return codConfirmare;
+        } else {
+            // Change below query according to your own database.
+            String query = "select cod_confirmare from user where email = '"+email +"'";
+            try {
+                Statement stmt  = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    codConfirmare = rs.getString(1);
+                }
+                connect.close();
+                return codConfirmare;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return codConfirmare;
+    }
+
+    public void activateUser (String email) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+        {
+
+        }
+        if (!email.equals("")) {
+            try {
+                String query = "UPDATE user SET activ = 1 where email = '" + email + "'";
+                PreparedStatement preparedStatement = null;
+                preparedStatement = connect.prepareStatement(query);
+                preparedStatement.executeUpdate();
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

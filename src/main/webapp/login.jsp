@@ -2,6 +2,8 @@
 <head>
     <link rel="stylesheet" href="resources/css/login.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
     <header>
         <img src="/images/logo.png" alt="World Tips Travel" style="margin-left: 45%;"/>
     </header>
@@ -38,11 +40,14 @@
 </div>
 <form action="checkCode" method="post">
     <dialog id="window">
-        <h3>Check Your Code!</h3>
+        <h3>Check Your Code!<i style="padding-left: 50%;" class="far fa-times-circle"><a onclick="closeDialog();">Close</a></i></h3>
         <p>We just send your authentification code on Email!Insert here:</p>
-        <input type="text" name="codeCreate" placeholder="Your Code Here"/>
+        <p></p>
+        <input type="text" name="codeV" placeholder="Your Code Here"/>
+        <input type="text" name="emailV" placeholder="Your Email Here"/>
+
+        <p class="message"><a>Check your code</a></p>
         <input type="submit"/>
-        <p class="message"><a onclick="closeDialog();">Check your code</a></p>
     </dialog>
 </form>
 <script type="text/javascript">

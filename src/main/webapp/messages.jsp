@@ -56,7 +56,7 @@
         /* Modal Content */
         .modal-content {
             position: fixed;
-            bottom: 40%;
+            bottom: 30%;
             background-color: #fefefe;
             width: 100%;
             -webkit-animation-name: slideIn;
@@ -140,14 +140,14 @@
 <div id="mytable">
     <table class="table table-bordered">
         <tr>
-            <th>User Name</th>
-            <th>Email From</th>
-            <th>Email To</th>
-            <th>Email Subject</th>
-            <th>Email Body</th>
-            <th>Date And Time</th>
-            <th>Read</th>
-            <th>Reply</th>
+            <th><i class="fas fa-user"></i>User Name</th>
+            <th><i class="far fa-inbox-out"></i>Email From</th>
+            <th><i class="far fa-inbox-in"></i>Email To</th>
+            <th><i class="far fa-comment"></i>Email Subject</th>
+            <th><i class="far fa-sticky-note"></i>Email Body</th>
+            <th><i class="far fa-calendar-alt"></i>ate And Time</th>
+            <th><i class="far fa-envelope-open"></i>Read</th>
+            <th><i class="fas fa-reply"></i>Reply</th>
         </tr>
         <%
             List<Email> lista = new ArrayList<>();

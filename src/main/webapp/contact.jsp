@@ -45,7 +45,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" name="email" required class="validate">
+                            <input id="email" type="email" name="email" value="<%=session.getAttribute("adminEmail")%>" readonly required class="validate">
                             <label for="email">Email</label>
                         </div>
                     </div>

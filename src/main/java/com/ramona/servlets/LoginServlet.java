@@ -34,13 +34,14 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String userRole = db.logIn(username,password);
-
+        String adminEmail = "admin@email.com";
         //session
 
 
         //
         if(userRole.equals("utilizator") || userRole.equals("ADMIN")) {
             //seteaza variabile
+            request.getSession().setAttribute("adminEmail",adminEmail);
             request.getSession().setAttribute("emailFrom",username);
             request.getSession().setAttribute("messages",messages);
             request.getSession().setAttribute("numarMesaje",numarMesaje);

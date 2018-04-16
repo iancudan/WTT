@@ -9,9 +9,9 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
           <element id="library" level="project" name="Maven: org.scala-lang:scala-library:2.10.3" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
           <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.6.1" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
         </element>
       </element>
       <element id="directory" name="META-INF">

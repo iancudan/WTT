@@ -63,7 +63,7 @@ public class SendGmail {
     public void sendEmail(String nume,String email,String parola){
         String[]recipient = new String[1];
         recipient[0]=email;
-        sendFromGMail(nume, parola, recipient, "TEST", "BODY");
+        sendFromGMail(username, password, recipient, "TEST", "BODY");
     }
 
     public static String codUnicDeIndentificare="";

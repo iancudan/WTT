@@ -1,5 +1,7 @@
 package WTT;
 
+import DB.DatabaseOperation;
+
 import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -64,6 +66,12 @@ public class SendGmail {
         String[]recipient = new String[1];
         recipient[0]=email;
         sendFromGMail(username, password, recipient, "TEST", "BODY");
+    }
+
+    public void sendEmailAdmin(String nume,String emailTo,String emailFrom,String subject,String body){
+        String[]recipient = new String[1];
+        recipient[0]=emailTo;
+        sendFromGMail(username, password, recipient, subject, body);
     }
 
     public static String codUnicDeIndentificare="";

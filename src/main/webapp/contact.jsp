@@ -52,7 +52,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="subject" type="text" name="subject" value="<%=session.getAttribute("emailSubject")%>" readonly required class="validate">
+                            <input id="subject" type="text" name="subject" value="<%=session.getAttribute("emailSubject")%>" required class="validate">
                             <label for="subject">Subject </label>
                         </div>
                     </div>

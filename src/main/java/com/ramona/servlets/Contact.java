@@ -13,15 +13,18 @@ import java.io.IOException;
 @WebServlet("/contact")
 public class Contact extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String mesaj = request.getParameter("message");
-        System.out.println(name + " "+ email + " " + mesaj);
+        response.sendRedirect("contact.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
      //cum mai fac un jsp si sa fac redirect catre el?
+        String emailFrom = request.getSession().getAttribute("emailFrom").toString();
+        String emailTo = request.getSession().getAttribute("adminEmail").toString();
+
+        request.getSession().setAttribute("emailFrom",emailFrom);
+        request.getSession().setAttribute("emailTo",emailTo);
+        request.getSession().setAttribute("subject","Subject");
+
         response.sendRedirect("contact.jsp");
 
     }

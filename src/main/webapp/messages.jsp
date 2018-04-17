@@ -252,7 +252,7 @@
             var dateandtime = oCells.item(6).innerHTML;
 
             document.getElementById('emailSubject').innerHTML += subject;
-            document.getElementById('from').innerHTML += userName += '( '+from +' )';
+            document.getElementById('from').innerHTML += from;
             document.getElementById('to').innerHTML += to;
             document.getElementById('emailBody').innerHTML += body;
             document.getElementById('dateandtime').innerHTML += dateandtime;

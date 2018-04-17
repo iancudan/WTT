@@ -20,3 +20,23 @@ $.ajax({
     }
 });
 }
+
+
+function readEmailCall (id){
+    $.ajax({
+        url: "ajaxcall",
+        type: "POST",
+        data: {
+            'method': "readEmail",
+            'id': id
+        },
+        success: function (data) {
+            debugger;
+            alert('Success!')
+        },
+        error: function () {
+            debugger;
+            alert('Failed!')
+        }
+    });
+}

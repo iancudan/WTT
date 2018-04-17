@@ -141,6 +141,7 @@
 <div id="mytable">
     <table class="table table-bordered">
         <tr>
+            <th><i class="fas fa-user"></i>ID</th>
             <th><i class="fas fa-user"></i>User Name</th>
             <th><i class="far fa-inbox-out"></i>Email From</th>
             <th><i class="far fa-inbox-in"></i>Email To</th>
@@ -158,6 +159,7 @@
                 if(lista.get(i).getEmailRead() == 1){
         %>
         <tr>
+            <td><%=lista.get(i).getId()%></td>
             <td><%=lista.get(i).getNumeUtilizator()%></td>
             <td><%=lista.get(i).getEmailFrom()%></td>
             <td><%=lista.get(i).getEmailTo()%></td>
@@ -171,6 +173,7 @@
         }else {
         %>
         <tr>
+            <td><%=lista.get(i).getId()%></td>
             <td><%=lista.get(i).getNumeUtilizator()%></td>
             <td><%=lista.get(i).getEmailFrom()%></td>
             <td><%=lista.get(i).getEmailTo()%></td>
@@ -229,9 +232,6 @@
     var modal = document.getElementById('myModal');
     var span = document.getElementsByClassName("close")[0];
 
-    debugger;
-    myFunction("1","1");
-
     function readEmail(row,id) {
 
 
@@ -245,12 +245,13 @@
         var myTable = document.getElementById('mytable');
 
             var oCells = myTable.children[0].rows.item(row).cells;
-            var userName = oCells.item(0).innerHTML;
-            var from = oCells.item(1).innerHTML;
-            var to = oCells.item(2).innerHTML;
-            var subject= oCells.item(3).innerHTML;
-            var body = oCells.item(4).innerHTML;
-            var dateandtime = oCells.item(5).innerHTML;
+            var idEmail = oCells.item(0).innerHTML;
+            var userName = oCells.item(1).innerHTML;
+            var from = oCells.item(2).innerHTML;
+            var to = oCells.item(3).innerHTML;
+            var subject= oCells.item(4).innerHTML;
+            var body = oCells.item(5).innerHTML;
+            var dateandtime = oCells.item(6).innerHTML;
 
             document.getElementById('emailSubject').innerHTML += subject;
             document.getElementById('from').innerHTML += userName += '( '+from +' )';
@@ -261,7 +262,7 @@
         $(id).removeClass('far fa-envelope');
         $(id).addClass('far fa-envelope-open');
 
-
+        readEmailCall(idEmail);
     }
 
 

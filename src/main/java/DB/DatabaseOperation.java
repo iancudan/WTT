@@ -274,4 +274,26 @@ public class DatabaseOperation {
             }
         }
     }
+
+
+    public void readEmail (String emailId) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+        {
+
+        }
+        if (emailId != null) {
+            try {
+                String query = "UPDATE email SET email_read = 1 where id = " + Integer.valueOf(emailId);
+                PreparedStatement preparedStatement = null;
+                preparedStatement = connect.prepareStatement(query);
+                preparedStatement.executeUpdate();
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

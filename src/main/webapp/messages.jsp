@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="resources/javascript/ajax.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="resources/css/table.css" />
     <style type="text/css">
         #mytable {
             margin: 0 auto;
@@ -31,11 +32,6 @@
             font-size: 2.625em;
             line-height: 1.3;
         }
-        .add-new-location {
-            margin-top: -5%;
-            margin-left: 77%;
-        }
-
         /* The Modal (background) */
         .modal {
             display: none; /* Hidden by default */
@@ -134,21 +130,18 @@
     <h1 class="header-h1">Perspective Page View Navigation <span>Transforms the page in 3D to reveal a menu</span></h1>
 </header>
 
-<div class="add-new-location">
-    <a href=""><i style="font-size: 25px;color:green" title="If your change are done, update the table!" class="fas fa-check"></i></a>
-</div>
 <form>
 <div id="mytable">
     <table class="table table-bordered">
         <tr>
             <th><i class="fas fa-user"></i>ID</th>
-            <th><i class="fas fa-user"></i>User Name</th>
-            <th><i class="far fa-inbox-out"></i>Email From</th>
-            <th><i class="far fa-inbox-in"></i>Email To</th>
-            <th><i class="far fa-comment"></i>Email Subject</th>
-            <th><i class="far fa-sticky-note"></i>Email Body</th>
-            <th><i class="far fa-calendar-alt"></i>ate And Time</th>
-            <th><i class="far fa-envelope-open"></i>Read</th>
+            <th><i class="fas fa-user"></i><p>User Name</p></th>
+            <th><i class="fas fa-share-square"></i><p>Email From</th>
+            <th><i class="far fa-hand-receiving"></i><p>Email To</th>
+            <th><i class="far fa-comment"></i><p>Email Subject</th>
+            <th><i class="far fa-sticky-note"></i><p>Email Body</th>
+            <th><i class="far fa-calendar-alt"></i><p>Date And Time</th>
+            <th><i class="far fa-envelope-open"></i><p>Read</th>
         </tr>
         <%
             List<Email> lista = new ArrayList<>();
@@ -188,31 +181,31 @@
     </table>
 
     <!-- The Modal -->
+    <form action="replyMail" method="post">
     <div id="myModal" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
                 <h4 ><b>Email Subject : </b></h4>
-                <h4 id ="emailSubject"></h4>
+                <h4 name="emailSubject" id ="emailSubject"></h4>
                 <a onclick="replyEmail()"><i style="font-size: 25px;" title="Reply" class="fas fa-reply-all"></i></a>
             </div>
             <div class="modal-body">
                 <p  style=" margin-top: -2%;"><b>FROM:</b></p>
-                <p id="from"></p>
+                <p name="from" id="from"></p>
                 <p><b>TO:</b></p>
-                <p id="to"  style="padding-bottom: 3%;"></p>
+                <p name="to" id="to"  style="padding-bottom: 3%;"></p>
                 <p ><b>Email Body:</b></p>
-                <p id="emailBody"></p>
+                <p name="emailBody" id="emailBody"></p>
             </div>
             <div class="modal-footer">
                 <h4><b>Date and Time</b> </h4>
-                <h4 id ="dateandtime"> </h4>
+                <h4 name="dateandtime" id ="dateandtime"></h4>
             </div>
         </div>
-
     </div>
+    </form>
 </div>
 </form>
 <script type="text/javascript">

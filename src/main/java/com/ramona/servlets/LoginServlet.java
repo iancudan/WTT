@@ -18,10 +18,18 @@ import java.util.List;
 @WebServlet("/userlogin")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //email
-        int nrMesaje = 0;
         DatabaseOperation db = new DatabaseOperation();
-        List<Email> messages = db.getEmail();
+        //login
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String userRole = db.logIn(username,password);
+        String adminEmail = "worldtipstravel@gmail.com";
+        //session
+        int nrMesaje = 0;
+        if(username.equals("admin"))
+            username = adminEmail;
+
+        List<Email> messages = db.getEmail(username);
         for(Email e :messages){
             if(e.getEmailRead() == 0)
                 nrMesaje++;
@@ -29,13 +37,7 @@ public class LoginServlet extends HttpServlet {
         String numarMesaje = String.valueOf(nrMesaje);
 
 
-        //login
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String userRole = db.logIn(username,password);
-        String adminEmail = "admin@email.com";
-        //session
 
 
         //
@@ -43,6 +45,7 @@ public class LoginServlet extends HttpServlet {
             //seteaza variabile
             request.getSession().setAttribute("adminEmail",adminEmail);
             request.getSession().setAttribute("emailFrom",username);
+            request.getSession().setAttribute("password",password);
             request.getSession().setAttribute("messages",messages);
             request.getSession().setAttribute("numarMesaje",numarMesaje);
             request.getSession().setAttribute("userRole",userRole);

@@ -110,7 +110,7 @@ public class DatabaseOperation {
     }
 
 
-    public List<Email> getEmail() {
+    public List<Email> getEmail(String emailTO) {
 
         List<Email> data =  new ArrayList<Email>();
         try {
@@ -120,7 +120,7 @@ public class DatabaseOperation {
 
             } else {
                 // Change below query according to your own database.
-                String query = "select * from email order by id asc";
+                String query = "select * from email where email_to ='"+emailTO+"' order by id asc";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {

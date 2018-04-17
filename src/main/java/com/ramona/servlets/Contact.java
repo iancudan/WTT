@@ -23,7 +23,7 @@ public class Contact extends HttpServlet {
 
         request.getSession().setAttribute("emailFrom",emailFrom);
         request.getSession().setAttribute("emailTo",emailTo);
-        request.getSession().setAttribute("subject","Subject");
+        request.getSession().setAttribute("emailSubject","Subject");
 
         response.sendRedirect("contact.jsp");
 

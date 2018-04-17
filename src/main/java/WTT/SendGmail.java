@@ -72,6 +72,14 @@ public class SendGmail {
         String[]recipient = new String[1];
         recipient[0]=emailTo;
         sendFromGMail(username, password, recipient, subject, body);
+        DatabaseOperation db = new DatabaseOperation();
+        Email email = new Email();
+        email.setNumeUtilizator(nume);
+        email.setEmailTo(emailTo);
+        email.setEmailFrom(emailFrom);
+        email.setEmailSubject(subject);
+        email.setEmailBody(body);
+        db.insertMessage(email);
     }
 
     public static String codUnicDeIndentificare="";

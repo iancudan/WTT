@@ -296,4 +296,32 @@ public class DatabaseOperation {
             }
         }
     }
+
+    public void insertMessage (Email email) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+        {
+
+        }
+        if (email != null) {
+            try {
+                String query = "insert into email (nume_utilizator,email,email_to,email_subject,email_body) VALUES(?,?,?,?,?)";
+                PreparedStatement preparedStatement = null;
+                preparedStatement = connect.prepareStatement(query);
+                preparedStatement.setString(1, email.getNumeUtilizator());
+                preparedStatement.setString(2,email.getEmailFrom());
+                preparedStatement.setString(3,email.getEmailTo());
+                preparedStatement.setString(4,email.getEmailSubject());
+                preparedStatement.setString(5,email.getEmailBody());
+                preparedStatement.executeUpdate();
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }

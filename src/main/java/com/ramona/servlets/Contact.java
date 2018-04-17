@@ -17,7 +17,7 @@ public class Contact extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     //cum mai fac un jsp si sa fac redirect catre el?
+
         String emailFrom = request.getSession().getAttribute("emailFrom").toString();
         String emailTo = request.getSession().getAttribute("adminEmail").toString();
 

@@ -21,7 +21,7 @@ public class AdminLocation extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     //cum mai fac un jsp si sa fac redirect catre el?
+
         DatabaseOperation db = new DatabaseOperation();
         List<Locatii> listaLocatii = db.getLocation();
 

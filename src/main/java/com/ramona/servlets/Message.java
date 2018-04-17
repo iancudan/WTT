@@ -21,7 +21,7 @@ public class Message extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     //cum mai fac un jsp si sa fac redirect catre el?
+
         DatabaseOperation db = new DatabaseOperation();
         String userName =request.getSession().getAttribute("username").toString();
         List<Email> messages = db.getEmail(userName);

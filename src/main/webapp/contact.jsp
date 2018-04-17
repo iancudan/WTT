@@ -45,13 +45,13 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" name="email" value="<%=session.getAttribute("adminEmail")%>" readonly required class="validate">
+                            <input id="email" type="email" name="email" value="<%=session.getAttribute("emailTo")%>" readonly required class="validate">
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="subject" name="subject" class="materialize-textarea" class="validate" ></textarea>
+                            <input id="subject" type="text" name="subject" value="<%=session.getAttribute("emailSubject")%>" readonly required class="validate">
                             <label for="subject">Subject </label>
                         </div>
                     </div>

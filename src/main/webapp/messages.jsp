@@ -149,7 +149,6 @@
             <th><i class="far fa-sticky-note"></i>Email Body</th>
             <th><i class="far fa-calendar-alt"></i>ate And Time</th>
             <th><i class="far fa-envelope-open"></i>Read</th>
-            <th><i class="fas fa-reply"></i>Reply</th>
         </tr>
         <%
             List<Email> lista = new ArrayList<>();
@@ -166,8 +165,7 @@
             <td><%=lista.get(i).getEmailSubject()%></td>
             <td><%=lista.get(i).getEmailBody()%></td>
             <td><%=lista.get(i).getEmailDateAndTime()%></td>
-            <td><a onclick="readopenedEmail(<%=i%>)"><i id="readEmailOpen" style="font-size: 25px;color:green" title="If your change are done, update the table!" class="far fa-envelope-open"></i></a></td>
-            <td><a><i style="font-size: 25px;" title="Reply" class="fas fa-reply-all"></i></a></td>
+            <td><a onclick="readopenedEmail(<%=i+1%>)"><i id="readEmailOpen" style="font-size: 25px;color:green" title="If your change are done, update the table!" class="far fa-envelope-open"></i></a></td>
         </tr>
         <%
         }else {
@@ -181,7 +179,6 @@
             <td><%=lista.get(i).getEmailBody()%></td>
             <td><%=lista.get(i).getEmailDateAndTime()%></td>
             <td><a onclick="readEmail(<%=i+1%>,'#readEmail<%=i+1%>')" ><i id="readEmail<%=i+1%>" style="font-size: 25px;color:green" title="If your change are done, update the table!" class="far fa-envelope"></i></a></td>
-            <td><a onclick="update()"><i style="font-size: 25px;" title="Reply" class="fas fa-reply-all"></i></a></td>
         </tr>
         <%
             }
@@ -199,6 +196,7 @@
                 <span class="close">&times;</span>
                 <h4 ><b>Email Subject : </b></h4>
                 <h4 id ="emailSubject"></h4>
+                <a onclick="replyEmail()"><i style="font-size: 25px;" title="Reply" class="fas fa-reply-all"></i></a>
             </div>
             <div class="modal-body">
                 <p  style=" margin-top: -2%;"><b>FROM:</b></p>
@@ -267,17 +265,24 @@
 
 
     function readopenedEmail(row) {
+
+        document.getElementById('emailSubject').innerHTML = "";
+        document.getElementById('from').innerHTML = "";
+        document.getElementById('to').innerHTML = "";
+        document.getElementById('emailBody').innerHTML = "";
+        document.getElementById('dateandtime').innerHTML = "";
+
         modal.style.display = "block";
-        debugger;
         var myTable = document.getElementById('mytable');
 
         var oCells = myTable.children[0].rows.item(row).cells;
-        var userName = oCells.item(0).innerHTML;
-        var from = oCells.item(1).innerHTML;
-        var to = oCells.item(2).innerHTML;
-        var subject= oCells.item(3).innerHTML;
-        var body = oCells.item(4).innerHTML;
-        var dateandtime = oCells.item(5).innerHTML;
+        var userName = oCells.item(1).innerHTML;
+        var from = oCells.item(2).innerHTML;
+        var to = oCells.item(3).innerHTML;
+        var subject= oCells.item(4).innerHTML;
+        var body = oCells.item(5).innerHTML;
+        var dateandtime = oCells.item(6).innerHTML;
+
 
         document.getElementById('emailSubject').innerHTML += subject;
         document.getElementById('from').innerHTML += from;
@@ -300,18 +305,14 @@
     }
 
 
-    function update(){
-        var xmhr = new XMLHttpRequest();
-        xmhr.onreadystatechange = function() {
-            if (xmhr.readyState == 4) {
-                var data = xmhr.responseText;
-                alert("Response Data "+data);
-            }
-        }
-        xmhr.open('POST', 'contact', true);
-        xmhr.send(null);
-    }
+    function replyEmail(){
+        debugger;
+        var emailSubject= document.getElementById('emailSubject').innerHTML ;
+        var emailTo= document.getElementById('from').innerHTML ;
+        var emailFrom = document.getElementById('to').innerHTML ;
 
+        replyEmailCall(emailSubject,emailTo,emailFrom);
+    }
 </script>
 </body>
 </html>

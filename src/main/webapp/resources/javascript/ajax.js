@@ -40,3 +40,24 @@ function readEmailCall (id){
         }
     });
 }
+
+function replyEmailCall (emailSubject,emailTo,emailFrom){
+    $.ajax({
+        url: "ajaxcall",
+        type: "POST",
+        data: {
+            'method': "replyEmail",
+            'emailSubject': emailSubject,
+            'emailTo': emailTo,
+            'emailFrom': emailFrom
+        },
+        success: function (data) {
+            debugger;
+            window.location = "contact.jsp";
+        },
+        error: function () {
+            debugger;
+            alert('Failed!')
+        }
+    });
+}

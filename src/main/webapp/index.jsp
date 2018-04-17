@@ -353,6 +353,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 <!-- Scripts -->
 <script src="intro/assets/js/jquery.min.js"></script>
+
 <script src="intro/assets/js/skel.min.js"></script>
 <script src="intro/assets/js/util.js"></script>
 <script src="intro/assets/js/main.js"></script>

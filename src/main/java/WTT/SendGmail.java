@@ -5,6 +5,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
+import java.util.Random;
 
 /**
  * Created by Silviu Iancu on 4/16/2018.
@@ -59,7 +60,22 @@ public class SendGmail {
         }
     }
 
-    public void sendEmail(){
+    public void sendEmail(String nume,String email,String parola){
+        String[]recipient = new String[1];
+        recipient[0]=email;
         sendFromGMail(username, password, recipient, "TEST", "BODY");
+    }
+
+    public static String codUnicDeIndentificare="";
+
+    public static final void getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 10) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        codUnicDeIndentificare = salt.toString();
     }
 }

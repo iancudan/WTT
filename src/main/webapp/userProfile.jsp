@@ -37,13 +37,13 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="name" type="text" style="background: #f2f2f2;" name="name" value="Iancu Dan Silviu" required class="validate" readonly>
+                            <input id="name" type="text" style="background: #f2f2f2;" name="name" value="Ramona Ioana Botezatu" required class="validate" readonly>
                             <label for="name">Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" style="background: #f2f2f2;" name="email" value="iancu@email.com" required class="validate" readonly>
+                            <input id="email" type="email" style="background: #f2f2f2;" name="email" value="ramona@email.com" required class="validate" readonly>
                             <label for="email">Email</label>
                         </div>
                     </div>

@@ -19,7 +19,7 @@
         <a href="#home" class="w3-bar-item w3-button"><b>WTT</b> World Tips Travel</a>
         <!-- Float links to the right. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
-            <a href="/dashboard.jsp" class="w3-bar-item w3-button"><i class="fas fa-home"  title="Go to Menu"></i></a>
+            <a href="dashboardMenu" class="w3-bar-item w3-button"><i class="fas fa-home"  title="Go to Menu"></i></a>
             <a href="#" class="w3-bar-item w3-button"><i class="fas fa-sign-out-alt" title="Sign Out"></i></a>
             <a href="#" class="w3-bar-item w3-button"><i class="fas fa-user" title="You are connected with <%=session.getAttribute("username")%>"></i></a>
         </div>
@@ -37,26 +37,32 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="name" type="text" style="background: #f2f2f2;" name="name" value="Ramona Ioana Botezatu" required class="validate" readonly>
+                            <input id="name" type="text" style="background: #f2f2f2;" name="name" required class="validate" readonly>
                             <label for="name">Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" style="background: #f2f2f2;" name="email" value="ramona@email.com" required class="validate" readonly>
+                            <input id="email" type="email" style="background: #f2f2f2;" name="email" value="<%=session.getAttribute("username")%>" value="ramona@email.com" required class="validate" readonly>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="text" style="background: #f2f2f2;" name="name" required class="validate" readonly>
+                            <input id="password" type="password" style="background: #f2f2f2;" value="<%=session.getAttribute("password")%>" name="name" required class="validate" readonly>
                             <label for="password">Password</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="repeatPassword" type="text" style="background: #f2f2f2;" name="name" required class="validate" readonly>
-                            <label for="repeatPassword">Repeat Password</label>
+                            <input id="repeatPassword" type="password" style="background: #f2f2f2;" name="name" required class="validate" readonly>
+                            <label for="repeatPassword">Repeat Password (in order to change)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="newPassword" type="password" style="background: #f2f2f2;" name="name" required class="validate" readonly>
+                            <label for="repeatPassword">New Password</label>
                         </div>
                     </div>
                     <div>
@@ -84,10 +90,10 @@
 <script>
     function editable(){
         //remove attr
-        $('#email').removeAttr("readonly");
-        $('#email').removeAttr("style");
         $('#name').removeAttr("readonly");
         $('#name').removeAttr("style");
+        $('#newPassword').removeAttr("style");
+        $('#newPassword').removeAttr("readonly");
         $('#password').removeAttr("readonly");
         $('#password').removeAttr("style");
         $('#repeatPassword').removeAttr("readonly");

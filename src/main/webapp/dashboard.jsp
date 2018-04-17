@@ -39,7 +39,7 @@
                     <a href="#home" class="w3-bar-item w3-button"><b>WTT</b> World Tips Travel</a>
                     <!-- Float links to the right. Hide them on small screens -->
                     <div class="w3-right w3-hide-small">
-                        <a href="login/dashboard.jsp" class="w3-bar-item w3-button"><i class="fas fa-home"  title="Go to Menu"></i></a>
+                        <a href="dashboardMenu" class="w3-bar-item w3-button"><i class="fas fa-home"  title="Go to Menu"></i></a>
                         <a href="#" class="w3-bar-item w3-button"><i class="fas fa-sign-out-alt" title="Sign Out"></i></a>
                         <a href="#" class="w3-bar-item w3-button"><i class="fas fa-user" title="You are connected with <%=session.getAttribute("username")%>"></i></a>
                     </div>
@@ -75,10 +75,11 @@
             }else{
 
         %>
-        <a href="/login/userProfile.jsp"> <i class="fas fa-user-secret">Security</i></a>
+        <a href="userSecurity"> <i class="fas fa-user-secret">Security</i></a>
         <a href="todolist"> <i class="fas fa-list-ol">My Bag</i></a>
         <a href="/login/maps.jsp"> <i class="fas fa-map">See your city</i></a>
         <a href="contact"> <i class="fas fa-at">Contact us</i></a>
+        <a href="messages"> <i class="fas fa-envelope">Messages<span class="menu-badge"><span class="badge vd_bg-red"><%=session.getAttribute("numarMesaje")%></span></span> </i></a>
         <%
             }
         %>

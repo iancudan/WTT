@@ -110,7 +110,7 @@ public class DatabaseOperation {
     }
 
 
-    public List<Email> getEmail() {
+    public List<Email> getEmail(String emailTO) {
 
         List<Email> data =  new ArrayList<Email>();
         try {
@@ -120,7 +120,7 @@ public class DatabaseOperation {
 
             } else {
                 // Change below query according to your own database.
-                String query = "select * from email order by id asc";
+                String query = "select * from email where email_to ='"+emailTO+"' order by id asc";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
@@ -274,4 +274,54 @@ public class DatabaseOperation {
             }
         }
     }
+
+
+    public void readEmail (String emailId) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+        {
+
+        }
+        if (emailId != null) {
+            try {
+                String query = "UPDATE email SET email_read = 1 where id = " + Integer.valueOf(emailId);
+                PreparedStatement preparedStatement = null;
+                preparedStatement = connect.prepareStatement(query);
+                preparedStatement.executeUpdate();
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void insertMessage (Email email) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+        {
+
+        }
+        if (email != null) {
+            try {
+                String query = "insert into email (nume_utilizator,email,email_to,email_subject,email_body) VALUES(?,?,?,?,?)";
+                PreparedStatement preparedStatement = null;
+                preparedStatement = connect.prepareStatement(query);
+                preparedStatement.setString(1, email.getNumeUtilizator());
+                preparedStatement.setString(2,email.getEmailFrom());
+                preparedStatement.setString(3,email.getEmailTo());
+                preparedStatement.setString(4,email.getEmailSubject());
+                preparedStatement.setString(5,email.getEmailBody());
+                preparedStatement.executeUpdate();
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }

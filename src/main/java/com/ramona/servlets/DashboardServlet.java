@@ -12,14 +12,13 @@ import java.io.PrintWriter;
 /**
  * Created by Silviu Iancu on 4/2/2018.
  */
-@WebServlet("/dashboardMenu")
+@WebServlet("/logout")
 public class DashboardServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("dashboard.jsp");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     //cum mai fac un jsp si sa fac redirect catre el?
         response.sendRedirect("dashboard.jsp");
     }
 }

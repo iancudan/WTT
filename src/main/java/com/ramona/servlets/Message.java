@@ -1,6 +1,7 @@
 package com.ramona.servlets;
 
 import DB.DatabaseOperation;
+import WTT.Email;
 import WTT.Utilizator;
 
 import javax.servlet.ServletException;
@@ -20,13 +21,19 @@ public class Message extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     //cum mai fac un jsp si sa fac redirect catre el?
+
         DatabaseOperation db = new DatabaseOperation();
-        List<Utilizator> listaUsers = db.getUsers();
+        String userName =request.getSession().getAttribute("username").toString();
+        List<Email> messages = db.getEmail(userName);
+        int nrMesaje = 0;
+        for(Email e :messages){
+            if(e.getEmailRead() == 0)
+                nrMesaje++;
+        }
+        String numarMesaje = String.valueOf(nrMesaje);
 
-        request.getSession().setAttribute("listaUsers",listaUsers);
-
-
+        request.getSession().setAttribute("numarMesaje",numarMesaje);
+        request.getSession().setAttribute("messages",messages);
         response.sendRedirect("messages.jsp");
     }
 }

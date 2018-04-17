@@ -18,12 +18,13 @@
         <a href="#home" class="w3-bar-item w3-button"><b>WTT</b> World Tips Travel</a>
         <!-- Float links to the right. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
-            <a href="/dashboard.jsp" class="w3-bar-item w3-button"><i class="fas fa-home"  title="Go to Menu"></i></a>
+            <a href="dashboardMenu" class="w3-bar-item w3-button"><i class="fas fa-home"  title="Go to Menu"></i></a>
             <a href="#" class="w3-bar-item w3-button"><i class="fas fa-sign-out-alt" title="Sign Out"></i></a>
             <a href="#" class="w3-bar-item w3-button"><i class="fas fa-user" title="You are connected with <%=session.getAttribute("username")%>"></i></a>
         </div>
     </div>
 </div>
+<form action="sendemail" method="post">
 <div class="container">
     <div class="imagebg"></div>
     <div class="container">
@@ -45,13 +46,13 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" name="email" value="<%=session.getAttribute("adminEmail")%>" readonly required class="validate">
+                            <input id="email" type="email" name="email" value="<%=session.getAttribute("emailTo")%>" readonly required class="validate">
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="subject" name="subject" class="materialize-textarea" class="validate" ></textarea>
+                            <input id="subject" type="text" name="subject" value="<%=session.getAttribute("emailSubject")%>" required class="validate">
                             <label for="subject">Subject </label>
                         </div>
                     </div>
@@ -83,5 +84,6 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 </div>
+</form>
 </body>
 </html>

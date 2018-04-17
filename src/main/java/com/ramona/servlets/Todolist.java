@@ -23,7 +23,7 @@ public class Todolist extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     //cum mai fac un jsp si sa fac redirect catre el?
+
         response.sendRedirect("todolist.jsp");
     }
 }

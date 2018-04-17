@@ -15,6 +15,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="resources/javascript/ajax.js"></script>
+
     <link rel="stylesheet" type="text/css" href="resources/css/table.css" />
     <style type="text/css">
         #mytable {
@@ -132,6 +134,7 @@
 <div id="mytable">
     <table class="table table-bordered">
         <tr>
+            <th><i class="fas fa-user"></i>ID</th>
             <th><i class="fas fa-user"></i><p>User Name</p></th>
             <th><i class="fas fa-share-square"></i><p>Email From</th>
             <th><i class="far fa-hand-receiving"></i><p>Email To</th>
@@ -148,18 +151,20 @@
                 if(lista.get(i).getEmailRead() == 1){
         %>
         <tr>
+            <td><%=lista.get(i).getId()%></td>
             <td><%=lista.get(i).getNumeUtilizator()%></td>
             <td><%=lista.get(i).getEmailFrom()%></td>
             <td><%=lista.get(i).getEmailTo()%></td>
             <td><%=lista.get(i).getEmailSubject()%></td>
             <td><%=lista.get(i).getEmailBody()%></td>
             <td><%=lista.get(i).getEmailDateAndTime()%></td>
-            <td><a onclick="readopenedEmail(<%=i%>)"><i id="readEmailOpen" style="font-size: 25px;color:green" title="If your change are done, update the table!" class="far fa-envelope-open"></i></a></td>
+            <td><a onclick="readopenedEmail(<%=i+1%>)"><i id="readEmailOpen" style="font-size: 25px;color:green" title="If your change are done, update the table!" class="far fa-envelope-open"></i></a></td>
         </tr>
         <%
         }else {
         %>
         <tr>
+            <td><%=lista.get(i).getId()%></td>
             <td><%=lista.get(i).getNumeUtilizator()%></td>
             <td><%=lista.get(i).getEmailFrom()%></td>
             <td><%=lista.get(i).getEmailTo()%></td>
@@ -184,6 +189,7 @@
                 <span class="close">&times;</span>
                 <h4 ><b>Email Subject : </b></h4>
                 <h4 name="emailSubject" id ="emailSubject"></h4>
+                <a onclick="replyEmail()"><i style="font-size: 25px;" title="Reply" class="fas fa-reply-all"></i></a>
             </div>
             <div class="modal-body">
                 <p  style=" margin-top: -2%;"><b>FROM:</b></p>
@@ -217,7 +223,6 @@
     var modal = document.getElementById('myModal');
     var span = document.getElementsByClassName("close")[0];
 
-
     function readEmail(row,id) {
 
 
@@ -228,19 +233,19 @@
         document.getElementById('dateandtime').innerHTML = "";
 
         modal.style.display = "block";
-        debugger;
         var myTable = document.getElementById('mytable');
 
             var oCells = myTable.children[0].rows.item(row).cells;
-            var userName = oCells.item(0).innerHTML;
-            var from = oCells.item(1).innerHTML;
-            var to = oCells.item(2).innerHTML;
-            var subject= oCells.item(3).innerHTML;
-            var body = oCells.item(4).innerHTML;
-            var dateandtime = oCells.item(5).innerHTML;
+            var idEmail = oCells.item(0).innerHTML;
+            var userName = oCells.item(1).innerHTML;
+            var from = oCells.item(2).innerHTML;
+            var to = oCells.item(3).innerHTML;
+            var subject= oCells.item(4).innerHTML;
+            var body = oCells.item(5).innerHTML;
+            var dateandtime = oCells.item(6).innerHTML;
 
             document.getElementById('emailSubject').innerHTML += subject;
-            document.getElementById('from').innerHTML += userName += '( '+from +' )';
+            document.getElementById('from').innerHTML += from;
             document.getElementById('to').innerHTML += to;
             document.getElementById('emailBody').innerHTML += body;
             document.getElementById('dateandtime').innerHTML += dateandtime;
@@ -248,22 +253,29 @@
         $(id).removeClass('far fa-envelope');
         $(id).addClass('far fa-envelope-open');
 
-
+        readEmailCall(idEmail);
     }
 
 
     function readopenedEmail(row) {
+
+        document.getElementById('emailSubject').innerHTML = "";
+        document.getElementById('from').innerHTML = "";
+        document.getElementById('to').innerHTML = "";
+        document.getElementById('emailBody').innerHTML = "";
+        document.getElementById('dateandtime').innerHTML = "";
+
         modal.style.display = "block";
-        debugger;
         var myTable = document.getElementById('mytable');
 
         var oCells = myTable.children[0].rows.item(row).cells;
-        var userName = oCells.item(0).innerHTML;
-        var from = oCells.item(1).innerHTML;
-        var to = oCells.item(2).innerHTML;
-        var subject= oCells.item(3).innerHTML;
-        var body = oCells.item(4).innerHTML;
-        var dateandtime = oCells.item(5).innerHTML;
+        var userName = oCells.item(1).innerHTML;
+        var from = oCells.item(2).innerHTML;
+        var to = oCells.item(3).innerHTML;
+        var subject= oCells.item(4).innerHTML;
+        var body = oCells.item(5).innerHTML;
+        var dateandtime = oCells.item(6).innerHTML;
+
 
         document.getElementById('emailSubject').innerHTML += subject;
         document.getElementById('from').innerHTML += from;
@@ -286,18 +298,14 @@
     }
 
 
-    function update(){
-        var xmhr = new XMLHttpRequest();
-        xmhr.onreadystatechange = function() {
-            if (xmhr.readyState == 4) {
-                var data = xmhr.responseText;
-                alert("Response Data "+data);
-            }
-        }
-        xmhr.open('POST', 'contact', true);
-        xmhr.send(null);
-    }
+    function replyEmail(){
+        debugger;
+        var emailSubject= document.getElementById('emailSubject').innerHTML ;
+        var emailTo= document.getElementById('from').innerHTML ;
+        var emailFrom = document.getElementById('to').innerHTML ;
 
+        replyEmailCall(emailSubject,emailTo,emailFrom);
+    }
 </script>
 </body>
 </html>

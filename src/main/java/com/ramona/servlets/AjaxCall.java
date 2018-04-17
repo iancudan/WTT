@@ -1,6 +1,7 @@
 package com.ramona.servlets;
 
 import DB.DatabaseOperation;
+import scala.util.parsing.combinator.testing.Str;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,9 +24,9 @@ public class AjaxCall extends HttpServlet {
             String idEmail   = request.getParameter("id");
             db.readEmail(idEmail);
             Integer numarMesaje= Integer.parseInt(request.getSession().getAttribute("numarMesaje").toString());
-            request.getSession().setAttribute("numarMesaje",numarMesaje--);
+            Integer nr = numarMesaje-1;
 
-
+            request.getSession().setAttribute("numarMesaje",String.valueOf(nr));
         }
 
     }

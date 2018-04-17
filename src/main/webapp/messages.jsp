@@ -15,6 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="resources/javascript/ajax.js"></script>
 
     <style type="text/css">
         #mytable {
@@ -228,6 +229,8 @@
     var modal = document.getElementById('myModal');
     var span = document.getElementsByClassName("close")[0];
 
+    debugger;
+    myFunction("1","1");
 
     function readEmail(row,id) {
 
@@ -239,7 +242,6 @@
         document.getElementById('dateandtime').innerHTML = "";
 
         modal.style.display = "block";
-        debugger;
         var myTable = document.getElementById('mytable');
 
             var oCells = myTable.children[0].rows.item(row).cells;

@@ -324,4 +324,26 @@ public class DatabaseOperation {
     }
 
 
+    public void updateUserPass (String email,String parola,String oldPass) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+        {
+
+        }
+        if (email != null) {
+            try {
+                String query = "UPDATE user SET parola ='"+parola+"'  where email = '" + email+"' and parola = '"+ oldPass +"'";
+                PreparedStatement preparedStatement = null;
+                preparedStatement = connect.prepareStatement(query);
+                preparedStatement.executeUpdate();
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }

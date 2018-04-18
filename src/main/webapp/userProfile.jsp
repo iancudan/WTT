@@ -25,50 +25,44 @@
         </div>
     </div>
 </div>
+<form class="col s12" id="userSecurity_form" action="userSecurity" method="post">
 <div class="container">
     <div class="imagebg"></div>
     <div class="container">
         <div class="form-container z-depth-5">
             <h3>Edit Profile</h3>
             <div class="row">
-                <form class="col s12" id="contact_form" action="send_email" method="post">
+
                     <div onclick="editable()">
                         <i class="fas fa-edit" style="font-size: 25px;margin-left: 86%;">Edit</i>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="name" type="text" style="background: #f2f2f2;" name="name" required class="validate" readonly>
-                            <label for="name">Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" style="background: #f2f2f2;" name="email" value="<%=session.getAttribute("username")%>" value="ramona@email.com" required class="validate" readonly>
+                            <input id="email" type="email" style="background: #f2f2f2;" name="emailProfile" value="<%=session.getAttribute("username")%>" required class="validate" readonly>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="password" style="background: #f2f2f2;" value="<%=session.getAttribute("password")%>" name="name" required class="validate" readonly>
+                            <input id="password" type="password" style="background: #f2f2f2;" name="passProfile" required class="validate" readonly>
                             <label for="password">Password</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="repeatPassword" type="password" style="background: #f2f2f2;" name="name" required class="validate" readonly>
+                            <input id="repeatPassword" type="password" style="background: #f2f2f2;" name="repeatPassProfile" required class="validate" readonly>
                             <label for="repeatPassword">Repeat Password (in order to change)</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="newPassword" type="password" style="background: #f2f2f2;" name="name" required class="validate" readonly>
+                            <input id="newPassword" type="password" style="background: #f2f2f2;" name="newPassProfile" required class="validate" readonly>
                             <label for="repeatPassword">New Password</label>
                         </div>
                     </div>
                     <div>
                         <button class="waves-effect waves-light btn submitbtn" type="submit" re>Submit</button>
                     </div>
-                </form>
                 <div id="error_message" style="width:100%; height:100%; display:none; ">
                     <h4>
                         Error
@@ -83,10 +77,12 @@
             </div>
         </div>
     </div>
+
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 </div>
+</form>
 <script>
     function editable(){
         //remove attr

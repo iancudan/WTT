@@ -1,3 +1,6 @@
+<%@ page import="WTT.Locatii" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +13,18 @@
 </head>
 <body>
 <form action="">
-    Search location:
-    <input type="text" name="location" id="location">
-    Lat:
-    <input type="text" name="lat" id="lat">
-    Long:
-    <input type="text" name="lat" id="long">
-    <button id="button" onclick="getLatLong()"></button>
+    <label for="location">Search cars: <input list="location" name="location" type="text">
+    </label>
+    <datalist id="location">
+        <%
+            List<Locatii> lista = new ArrayList<>();
+            lista =(List) session.getAttribute("listaLocatii");
+            for (int i=0;i<lista.size();i++)
+            {
+        %>
+        <option id="<%=lista.get(i).getNumeOras()%>" value="<%=lista.get(i).getNumeOras()%>"><%=lista.get(i).getNumeOras()%></option>
+        <%}%>
+    </datalist>
 </form>
 
 <h3>My Google Maps Demo</h3>
@@ -40,7 +48,6 @@
     }
 
     function getLatLong(){
-        debugger;
         var array=["New York;","Barcelona"];
         var searchedCity = document.getElementById("location").value;
         for(var i =0;i<array.length;i++){

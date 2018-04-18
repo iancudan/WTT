@@ -31,7 +31,6 @@
         <div class="form-container z-depth-5">
             <h3>Contact us</h3>
             <div class="row">
-                <form class="col s12" id="contact_form" action="contact" method="post">
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="name" type="text" name="name" required class="validate">
@@ -65,7 +64,6 @@
                     <div>
                         <button class="waves-effect waves-light btn submitbtn" type="submit">Submit</button>
                     </div>
-                </form>
                 <div id="error_message" style="width:100%; height:100%; display:none; ">
                     <h4>
                         Error

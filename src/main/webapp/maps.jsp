@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         #map {
             height: 400px;
@@ -21,7 +23,18 @@
     </style>
 </head>
 <body>
-<form action="">
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a href="#home" class="w3-bar-item w3-button"><b>WTT</b> World Tips Travel</a>
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="dashboardMenu" class="w3-bar-item w3-button"><i class="fas fa-home"  title="Go to Menu"></i></a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-sign-out-alt" title="Sign Out"></i></a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-user" title="You are connected with <%=session.getAttribute("username")%>"></i></a>
+        </div>
+    </div>
+</div>
     <%
         List<Locatii> lista = new ArrayList<>();
         lista =(List) session.getAttribute("listaLocatii");
@@ -39,8 +52,6 @@
         <option id="nume<%=i%>" value="<%=lista.get(i).getNumeOras()+"("+lista.get(i).getLat()+","+lista.get(i).getLon()+")"%>"><%=lista.get(i).getNumeOras()%></option>
         <%}%>
     </datalist>
-</form>
-
 <h3>My Google Maps Demo</h3>
 <div id="map_wrapper">
     <div id="map_canvas" class="mapping"></div>

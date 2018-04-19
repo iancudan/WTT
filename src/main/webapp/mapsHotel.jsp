@@ -21,9 +21,6 @@
         table {
             font-size: 12px;
         }
-        #map {
-            width: 440px;
-        }
         #listing {
             position: absolute;
             width: 200px;
@@ -155,6 +152,10 @@
             <tr id="iw-website-row" class="iw_table_row">
                 <td class="iw_attribute_name">Website:</td>
                 <td id="iw-website"></td>
+            </tr>
+            <tr id="iw-search-places" class="iw_table_row">
+                <td class="iw_attribute_name">Search Places:</td>
+                <td id="iw-search">Search Place Nearby This Hotel</td>
             </tr>
         </table>
     </div>
@@ -380,18 +381,19 @@
     // anchored on the marker for the hotel that the user selected.
     function showInfoWindow() {
         var marker = this;
+        debugger;
         places.getDetails({placeId: marker.placeResult.place_id},
             function(place, status) {
                 if (status !== google.maps.places.PlacesServiceStatus.OK) {
                     return;
                 }
                 infoWindow.open(map, marker);
-                buildIWContent(place);
+                buildIWContent(place,marker);
             });
     }
 
     // Load the place information into the HTML elements used by the info window.
-    function buildIWContent(place) {
+    function buildIWContent(place,marker) {
         document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
             'src="' + place.icon + '"/>';
         document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
@@ -405,10 +407,9 @@
         } else {
             document.getElementById('iw-phone-row').style.display = 'none';
         }
+        debugger;
+        document.getElementById('iw-search').innerHTML =  '<b><a onclick="searchPlaces(' + marker.position.lat()+","+marker.position.lng()+')">'+"Search place neaby "+ place.name + '</a></b>';
 
-        // Assign a five-star rating to the hotel, using a black star ('&#10029;')
-        // to indicate the rating the hotel has earned, and a white star ('&#10025;')
-        // for the rating points not achieved.
         if (place.rating) {
             var ratingHtml = '';
             for (var i = 0; i < 5; i++) {

@@ -6,12 +6,10 @@
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
+    <script src="resources/javascript/ajax.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <style>
         #map_wrapper {
             height: 400px;
         }
@@ -20,6 +18,20 @@
             width: 100%;
             height: 100%;
         }
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .button5 {border-radius: 50%;}
     </style>
 </head>
 <body>
@@ -37,12 +49,13 @@
 </div>
     <%
         List<Locatii> lista = new ArrayList<>();
-        lista =(List) session.getAttribute("listaLocatii");
+        List<Locatii> listaOraseVizitate = new ArrayList<>();
+        lista =(List) session.getAttribute("listaLocatiiVizitate");
+        listaOraseVizitate =(List) session.getAttribute("listaLocatii");
     %>
 
-    <label for="location">Search cars: <input list="location" name="location" type="text">
+    <label for="location">Vizited city: <input style="margin-top:4%;" list="location" name="location" type="text">
     </label>
-    <input type="button" onclick="addMarker()">
     <input id="hidden" type="hidden" value="<%=lista.size()%>">
     <datalist id="location">
        <%
@@ -50,6 +63,19 @@
             {
         %>
         <option id="nume<%=i%>" value="<%=lista.get(i).getNumeOras()+"("+lista.get(i).getLat()+","+lista.get(i).getLon()+")"%>"><%=lista.get(i).getNumeOras()%></option>
+        <%}%>
+    </datalist>
+
+    <label for="listaOraseVizitate">Search next location that you want to vizit: <input id="oraseVizitate" style="margin-top:4%;" list="listaOraseVizitate" name="locatiiVizitate" type="text">
+    </label>
+    <button class="button button5" onclick="searchPlacesInCity()">Search Places</button>
+    <button class="button button5" onclick="searchHotelInCity()">Search hotel</button>
+    <datalist id="listaOraseVizitate">
+        <%
+             for (int i=0;i<listaOraseVizitate.size();i++)
+            {
+        %>
+        <option id="nume<%=i%>" value="<%=listaOraseVizitate.get(i).getNumeOras()+"("+listaOraseVizitate.get(i).getLat()+","+listaOraseVizitate.get(i).getLon()+")"%>"><%=listaOraseVizitate.get(i).getNumeOras()%></option>
         <%}%>
     </datalist>
 <h3>My Google Maps Demo</h3>
@@ -133,6 +159,21 @@
             position: location,
             map: map
         });
+    }
+
+
+    function searchHotelInCity(){
+        searchHotel();
+    }
+
+    function searchPlacesInCity() {
+        debugger;
+        var value = document.getElementById('oraseVizitate').value;
+        var latLong = value.substring(value.indexOf('(') + 1, value.indexOf(')'))
+        var lat = latLong.split(',')[0];
+        var long = latLong.split(',')[1];
+
+        searchPlaces(lat,long);
     }
 </script>
 <script async defer

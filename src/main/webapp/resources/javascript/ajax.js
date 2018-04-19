@@ -61,3 +61,41 @@ function replyEmailCall (emailSubject,emailTo,emailFrom){
         }
     });
 }
+
+
+function searchHotel(){
+    $.ajax({
+        url: "ajaxcall",
+        type: "GET",
+        data: {
+            'method': "searchHotel"
+        },
+        success: function (data) {
+            alert('Succes!' +data)
+            window.location = "mapsHotel.jsp"
+        },
+        error: function () {
+            debugger;
+            alert('Failed!')
+        }
+    });
+}
+
+function searchPlaces(lat,long){
+    $.ajax({
+        url: "ajaxcall",
+        type: "GET",
+        data: {
+            'method': "searchPlaces",
+            'lat': lat,
+            'long': long
+        },
+        success: function (data) {
+            window.location = "mapsNearbyplaces.jsp";
+        },
+        error: function () {
+            debugger;
+            alert('Failed!')
+        }
+    });
+}

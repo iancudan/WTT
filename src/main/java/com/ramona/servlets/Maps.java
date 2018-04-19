@@ -21,12 +21,15 @@ public class Maps extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //
         DatabaseOperation db = new DatabaseOperation();
+        String email = request.getSession().getAttribute("emailFrom").toString();
+
+        //
+        List<Locatii> listaLocatiiVizitate = db.oraseVizitate(email);
         List<Locatii> listaLocatii = db.getLocation();
-
+        request.getSession().setAttribute("listaLocatiiVizitate",listaLocatiiVizitate);
         request.getSession().setAttribute("listaLocatii",listaLocatii);
-
-
         response.sendRedirect("mapsVisitCity.jsp");
     }
 }

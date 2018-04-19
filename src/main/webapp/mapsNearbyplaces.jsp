@@ -82,7 +82,12 @@
 
         function initMap() {
             // Create the map.
-            var pyrmont = {lat: -33.866, lng: 151.196};
+            debugger;
+            var lat = document.getElementById("lat").value;
+            var long = document.getElementById("long").value;
+
+            //var pyrmont = {lat: -33.866, lng: 151.196};
+            var pyrmont = {lat: parseFloat(lat), lng: parseFloat(long)};
             map = new google.maps.Map(document.getElementById('map'), {
                 center: pyrmont,
                 zoom: 17
@@ -142,6 +147,8 @@
     </script>
 </head>
 <body>
+<input type="hidden" id="lat" value="<%=session.getAttribute("lat")%>"/>
+<input type="hidden" id="long" value="<%=session.getAttribute("lon")%>"/>
 <div id="map"></div>
 <div id="right-panel">
     <h2>Results</h2>

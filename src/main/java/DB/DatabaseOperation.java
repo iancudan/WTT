@@ -346,4 +346,52 @@ public class DatabaseOperation {
     }
 
 
+    public List<Locatii> oraseVizitate(String email) {
+        String[] oraseVIDs=null;
+        List<String> oraseVizitate = new ArrayList<String>();
+        List<Locatii> data = new ArrayList<Locatii>();
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+        {
+
+        }
+        if (email != null) {
+                String query = "select id_locatii from user_preferences where id_user = (select id from user where email ='" + email + "')";
+                try {
+                    Statement stmt = connect.createStatement();
+                    ResultSet rs = stmt.executeQuery(query);
+                    while (rs.next()) {
+                       String oV= rs.getString(1);
+                       oraseVIDs = new String[oV.split(",").length];
+                       oraseVIDs = oV.split(",");
+                       for(int i =0;i<oraseVIDs.length;i++){
+                           oraseVizitate.add(oraseVIDs[i]);
+                       }
+
+                    }
+                    //
+                    String querylocatii = "select * from locatii where id in ("+oraseVizitate.toString().replace("[","").replace("]","")+")";
+                    Statement stmtLocatii = connect.createStatement();
+                    ResultSet rsLocatii = stmtLocatii.executeQuery(querylocatii);
+                    while (rsLocatii.next()) {
+                        Locatii locatie = new Locatii();
+                        locatie.setId(rsLocatii.getInt(1));
+                        locatie.setNumeOras(rsLocatii.getString(2));
+                        locatie.setIdCat1(rsLocatii.getInt(3));
+                        locatie.setIdCat2(rsLocatii.getInt(4));
+                        locatie.setLat(rsLocatii.getString(5));
+                        locatie.setLon(rsLocatii.getString(6));
+                        data.add(locatie);
+                    }
+                    connect.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+        }
+        return data;
+
+    }
+
+
 }

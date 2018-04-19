@@ -70,6 +70,7 @@
     </label>
     <button class="button button5" onclick="searchPlacesInCity()">Search Places</button>
     <button class="button button5" onclick="searchHotelInCity()">Search hotel</button>
+    <button class="button button5" onclick="searchAdressInCity()">Search Adress</button>
     <datalist id="listaOraseVizitate">
         <%
              for (int i=0;i<listaOraseVizitate.size();i++)
@@ -167,13 +168,21 @@
     }
 
     function searchPlacesInCity() {
-        debugger;
         var value = document.getElementById('oraseVizitate').value;
         var latLong = value.substring(value.indexOf('(') + 1, value.indexOf(')'))
         var lat = latLong.split(',')[0];
         var long = latLong.split(',')[1];
 
         searchPlaces(lat,long);
+    }
+
+    function searchAdressInCity() {
+        var value = document.getElementById('oraseVizitate').value;
+        var latLong = value.substring(value.indexOf('(') + 1, value.indexOf(')'))
+        var lat = latLong.split(',')[0];
+        var long = latLong.split(',')[1];
+
+        searchAdress(lat,long);
     }
 </script>
 <script async defer

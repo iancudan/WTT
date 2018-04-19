@@ -99,3 +99,22 @@ function searchPlaces(lat,long){
         }
     });
 }
+
+function searchAdress(lat,long){
+    $.ajax({
+        url: "ajaxcall",
+        type: "GET",
+        data: {
+            'method': "searchAdress",
+            'lat': lat,
+            'long': long
+        },
+        success: function (data) {
+            window.location = "mapsSearchAdress.jsp";
+        },
+        error: function () {
+            debugger;
+            alert('Failed!')
+        }
+    });
+}

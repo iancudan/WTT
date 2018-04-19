@@ -65,5 +65,14 @@ public class AjaxCall extends HttpServlet {
             request.getSession().setAttribute("lon",lon);
             response.sendRedirect("mapsNearbyplaces.jsp");
         }
+
+        if(method.equals("searchAdress")){
+            String lat   = request.getParameter("lat");
+            String lon   = request.getParameter("long");
+            //
+            request.getSession().setAttribute("lat",lat);
+            request.getSession().setAttribute("lon",lon);
+            response.sendRedirect("mapsSearchAdress.jsp");
+        }
     }
 }

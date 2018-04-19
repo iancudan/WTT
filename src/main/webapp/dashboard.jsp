@@ -77,7 +77,7 @@
         %>
         <a href="userSecurity"> <i class="fas fa-user-secret">Security</i></a>
         <a href="todolist"> <i class="fas fa-list-ol">My Bag</i></a>
-        <a href="/login/maps.jsp"> <i class="fas fa-map">See your city</i></a>
+        <a href="maps"> <i class="fas fa-map">See your city</i></a>
         <a href="contact"> <i class="fas fa-at">Contact us</i></a>
         <a href="messages"> <i class="fas fa-envelope">Messages<span class="menu-badge"><span class="badge vd_bg-red"><%=session.getAttribute("numarMesaje")%></span></span> </i></a>
         <%

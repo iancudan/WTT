@@ -48,6 +48,31 @@ public class AjaxCall extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DatabaseOperation db = new DatabaseOperation();
         String method= request.getParameter("method");
+        if(method.equals("searchHotel")){
+         /*   String lat   = request.getParameter("lat");
+            String lon   = request.getParameter("long");
+            //
+            request.getSession().setAttribute("lat",lat);
+            request.getSession().setAttribute("lon",lon);
+*/            response.sendRedirect("mapsHotel.jsp");
 
+        }
+        if(method.equals("searchPlaces")){
+            String lat   = request.getParameter("lat");
+            String lon   = request.getParameter("long");
+            //
+            request.getSession().setAttribute("lat",lat);
+            request.getSession().setAttribute("lon",lon);
+            response.sendRedirect("mapsNearbyplaces.jsp");
+        }
+
+        if(method.equals("searchAdress")){
+            String lat   = request.getParameter("lat");
+            String lon   = request.getParameter("long");
+            //
+            request.getSession().setAttribute("lat",lat);
+            request.getSession().setAttribute("lon",lon);
+            response.sendRedirect("mapsSearchAdress.jsp");
+        }
     }
 }

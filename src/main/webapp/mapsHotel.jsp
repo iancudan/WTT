@@ -4,6 +4,8 @@
     <title>Place Autocomplete Hotel Search</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <script src="resources/javascript/ajax.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -287,6 +289,7 @@
                 clearMarkers();
                 // Create a marker for each hotel found, and
                 // assign a letter of the alphabetic to each marker icon.
+                debugger;
                 for (var i = 0; i < results.length; i++) {
                     var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
                     var markerIcon = MARKER_PATH + markerLetter + '.png';
@@ -361,7 +364,9 @@
         nameTd.appendChild(name);
         tr.appendChild(iconTd);
         tr.appendChild(nameTd);
+
         results.appendChild(tr);
+
     }
 
     function clearResults() {

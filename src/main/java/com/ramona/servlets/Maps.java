@@ -17,7 +17,7 @@ import java.util.List;
 @WebServlet("/maps")
 public class Maps extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("maps.jsp");
+        response.sendRedirect("mapsVisitCity.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,6 +27,6 @@ public class Maps extends HttpServlet {
         request.getSession().setAttribute("listaLocatii",listaLocatii);
 
 
-        response.sendRedirect("maps.jsp");
+        response.sendRedirect("mapsVisitCity.jsp");
     }
 }
